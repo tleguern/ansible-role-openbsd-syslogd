@@ -1,0 +1,19 @@
+---
+- name: Enable syslog
+  service:
+    name: syslogd
+    arguments: "{{ syslogd_flags }}"
+    enabled: yes
+
+- name: Ensure extra log files exists.
+  include_tasks: extra-file.yml
+  loop: "{{ syslogd_extra_files }}"
+
+- name: Ensure syslog is configured.
+  template:
+    src: syslog.conf.j2
+    dest: /etc/syslog.conf
+    owner: root
+    group: wheel
+    mode: 0644
+  notify: Restart syslogd

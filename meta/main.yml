@@ -1,0 +1,16 @@
+---
+dependencies: []                                                                
+                                                                                
+galaxy_info:
+  role_name: openbsd_syslogd
+  author: "Tristan Le Guern"
+  description: "OpenBSD syslogd"
+  company: "Gwern"
+  license: "ISC"
+  min_ansible_version: 2.4
+  platforms:
+    - name: OpenBSD
+      versions:
+        - "6.8"
+  galaxy_tags:
+    - syslog

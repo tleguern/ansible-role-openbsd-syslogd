@@ -1,0 +1,14 @@
+---
+- name: Check if {{ item }} exists.
+  stat:
+    path: "/var/log/{{ item }}"
+  register: st
+
+- name: Create {{ item }} if it doesn't exist.
+  file:
+    path: "/var/log/{{ item }}"
+    state: touch
+    owner: root
+    group: wheel
+    mode: 0644
+  when: not st.stat.exists
